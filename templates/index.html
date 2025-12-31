@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Quote Generator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(14px);
+            padding: 50px;
+            width: 70%;
+            max-width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            animation: fadeUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+            animation: glow 6s linear infinite;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote::before,
+        .quote::after {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .quote::before {
+            content: "“";
+            margin-right: 5px;
+        }
+
+        .quote::after {
+            content: "”";
+            margin-left: 5px;
+        }
+
+        .author {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        button {
+            padding: 14px 36px;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                width: 90%;
+                padding: 35px 25px;
+            }
+
+            h1 { font-size: 2rem; }
+            .quote { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>🤖 AI Quote Generator</h1>
+
+        <div class="quote">
+            {{ quote }}
+        </div>
+
+        <div class="author">
+            — {{ author }}
+        </div>
+
+        <form method="get">
+            <button type="submit">✨ Generate New Quote</button>
+        </form>
+
+        <form method="get" action="{{ url_for('logout') }}">
+            <button type="submit">🚪 Logout</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

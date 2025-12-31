@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        /* Page styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6dd5fa, #ffffff);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* Link styled as button */
+        .btn {
+            display: inline-block;
+            width: 180px;
+            padding: 15px;
+            margin: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-register {
+            background-color: #28a745;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+        }
+
+        /* Hover effects */
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn-register:hover {
+            background-color: #218838;
+        }
+
+        .btn-login:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome</h1>
+
+    <a class="btn btn-register" href="{{ url_for('registration') }}">Register</a>
+    <a class="btn btn-login" href="{{ url_for('login') }}">Login</a>
+
+</body>
+</html>
